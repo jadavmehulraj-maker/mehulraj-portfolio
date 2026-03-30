@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehulraj Jadav Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background:#0a0a0a;
+color:#fff;
+overflow-x:hidden;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav a{
+margin-left:20px;
+color:#aaa;
+text-decoration:none;
+}
+
+nav a:hover{color:#00ffd5;}
+
+section{
+min-height:100vh;
+padding:120px 60px;
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.hero img{
+width:320px;
+border-radius:20px;
+box-shadow:0 0 50px rgba(0,255,213,0.2);
+}
+
+h1{font-size:48px;}
+
+.typing{
+color:#00ffd5;
+margin-top:10px;
+font-size:20px;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+background:#00ffd5;
+border:none;
+border-radius:25px;
+color:black;
+text-decoration:none;
+display:inline-block;
+}
+
+.glass{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Mehulraj</h2>
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero show">
+<div>
+<h1>Mehulraj Jadav</h1>
+<div class="typing" id="typing"></div>
+<p style="margin-top:10px;color:#aaa;">
+Aspiring Banking & CRM Professional focused on operations, sales, and customer excellence.
+</p>
+
+<a href="resume.pdf" download class="btn">Download Resume</a>
+</div>
+
+<img src="photo.jpg">
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="glass">
+<p>
+BBA student (CGPA 8.60) with internship experience in banking and ERP/CRM sales. Strong in communication, leadership, and business operations.
+</p>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="glass grid">
+<div>CRM & ERP Systems</div>
+<div>Customer Operations</div>
+<div>Sales & Negotiation</div>
+<div>MS Excel & Office</div>
+<div>Leadership</div>
+<div>Problem Solving</div>
+</div>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="grid">
+
+<div class="glass">
+<h3>Biziverse Pvt Ltd</h3>
+<p>Worked on onboarding, CRM workflows, and B2B software sales.</p>
+</div>
+
+<div class="glass">
+<h3>Veraval People's Co-op Bank</h3>
+<p>Learned banking operations and customer service processes.</p>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="glass">
+<p>Email: jadavmehulraj@gmail.com</p>
+<p>Phone: +91-7016647376</p>
+<p>LinkedIn: linkedin.com/in/jadav-mehulraj</p>
+</div>
+</section>
+
+<div class="footer">
+© 2026 Mehulraj Jadav
+</div>
+
+<script>
+
+// typing animation
+const text = ["Future Banker","CRM Specialist","Sales Professional"];
+let i=0,j=0,current="",del=false;
+
+function type(){
+if(i<text.length){
+if(!del && j<=text[i].length){
+current=text[i].substring(0,j++);
+}else if(del && j>=0){
+current=text[i].substring(0,j--);
+}
+if(j==text[i].length) del=true;
+if(j==0){del=false;i++;}
+document.getElementById("typing").innerHTML=current;
+}
+setTimeout(type,100);
+}
+type();
+
+// scroll animation
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(window.scrollY > sec.offsetTop-400){
+sec.classList.add("show");
+}
+});
+});
+
+// smooth scroll
+document.querySelectorAll("a[href^='#']").forEach(a=>{
+a.onclick=e=>{
+e.preventDefault();
+document.querySelector(a.getAttribute("href"))
+.scrollIntoView({behavior:"smooth"});
+};
+});
+
+</script>
+
+</body>
+</html>
